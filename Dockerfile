@@ -1,8 +1,6 @@
 # Use the official SQL Server Express image from Microsoft
 FROM mcr.microsoft.com/mssql/server:2019-latest
 
-# Set environment variables
-ENV SA_PASSWORD P@ssword1!
 ENV ACCEPT_EULA Y
 
 # Create a working directory
