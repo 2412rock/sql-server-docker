@@ -30,7 +30,8 @@ CREATE TABLE JunctionServicii (
     ServiciuIdID INT,
     PRIMARY KEY (UserID, ServiciuIdID),
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ServiciuIdID)
+    FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ServiciuIdID),
+    Descriere NVARCHAR(1024)
 );
 GO
 CREATE TABLE JunctionJudete (
