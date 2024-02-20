@@ -16,30 +16,24 @@ CREATE TABLE Users (
 );
 GO
 CREATE TABLE Judete (
-    JudetID INT IDENTITY(1,1) PRIMARY KEY,
+    ID INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(255),
 );
 GO
 CREATE TABLE Servicii (
-    ServiciuIdID INT IDENTITY(1,1) PRIMARY KEY,
+    ID INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(255),
 );
 GO
-CREATE TABLE JunctionServicii (
+CREATE TABLE JunctionServiciuJudete (
     UserID INT,
     ServiciuIdID INT,
-    PRIMARY KEY (UserID, ServiciuIdID),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ServiciuIdID),
-    Descriere NVARCHAR(1024)
-);
-GO
-CREATE TABLE JunctionJudete (
-    UserID INT,
     JudetID INT,
-    PRIMARY KEY (UserID, JudetID),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (JudetID) REFERENCES Judete(JudetID)
+    PRIMARY KEY (UserID, ServiciuIdID, JudetID),
+    FOREIGN KEY (UserID) REFERENCES Users(ID),
+    FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ID),
+    FOREIGN KEY (JudetID) REFERENCES Judete(ID),
+    Descriere NVARCHAR(1024)
 );
 GO
 
