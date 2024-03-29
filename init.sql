@@ -1,45 +1,62 @@
+-- Check if the DorelDB database exists, if not, create it
+IF NOT EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DorelDB')
+BEGIN
+    CREATE DATABASE DorelDB;
+    USE DorelDB;
+END
+ELSE
+BEGIN
+    USE DorelDB;
+END;
 
--- Create the UsersDB database
-CREATE DATABASE DorelDB;
-GO
+-- Check if the Users table exists, if not, create it
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users')
+BEGIN
+    CREATE TABLE Users (
+        UserID INT IDENTITY(1,1) PRIMARY KEY,
+        Name NVARCHAR(50),
+        Email NVARCHAR(255),
+        Password NVARCHAR(255)
+    );
+END;
 
--- Switch to the UsersDB database
-USE DorelDB;
-GO
+-- Check if the Judete table exists, if not, create it
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Judete')
+BEGIN
+    CREATE TABLE Judete (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        Name NVARCHAR(255)
+    );
+END;
 
--- Create a table in UsersDB
-CREATE TABLE Users (
-    UserID INT IDENTITY(1,1) PRIMARY KEY,
-    Name NVARCHAR(50),
-    Email NVARCHAR(255),
-    Password NVARCHAR(255)
-);
-GO
-CREATE TABLE Judete (
-    ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name NVARCHAR(255),
-);
-GO
-CREATE TABLE Servicii (
-    ID INT IDENTITY(1,1) PRIMARY KEY,
-    Name NVARCHAR(255),
-);
-GO
-CREATE TABLE JunctionServiciuJudete (
-    UserID INT,
-    ServiciuIdID INT,
-    JudetID INT,
-    PRIMARY KEY (UserID, ServiciuIdID, JudetID),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ID),
-    FOREIGN KEY (JudetID) REFERENCES Judete(ID),
-    Descriere NVARCHAR(1024)
-);
-GO
+-- Check if the Servicii table exists, if not, create it
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Servicii')
+BEGIN
+    CREATE TABLE Servicii (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        Name NVARCHAR(255)
+    );
+END;
 
-INSERT INTO Judete (Name)
-VALUES ('Hunedoara'), ('Arad'), ('Timisoara'), ('Cluj'),('Bucuresti');
-GO
-INSERT INTO Servicii (Name)
-VALUES ('Electrician'), ('Zugrav'), ('Menajera'), ('Instalator');
-GO
+-- Check if the JunctionServiciuJudete table exists, if not, create it
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'JunctionServiciuJudete')
+BEGIN
+    CREATE TABLE JunctionServiciuJudete (
+        UserID INT,
+        ServiciuIdID INT,
+        JudetID INT,
+        PRIMARY KEY (UserID, ServiciuIdID, JudetID),
+        FOREIGN KEY (UserID) REFERENCES Users(UserID),
+        FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ID),
+        FOREIGN KEY (JudetID) REFERENCES Judete(ID),
+        Descriere NVARCHAR(1024)
+    );
+END;
+
+
+-- Add Rating column to JunctionServiciuJudete table if it doesn't exist
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'JunctionServiciuJudete' AND COLUMN_NAME = 'Rating')
+BEGIN
+    ALTER TABLE JunctionServiciuJudete
+    ADD Rating DECIMAL(10, 2);
+END;
