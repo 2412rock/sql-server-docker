@@ -60,3 +60,19 @@ BEGIN
     ALTER TABLE JunctionServiciuJudete
     ADD Rating DECIMAL(10, 2);
 END;
+
+-- Create the Reviews table if it does not exist
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Reviews')
+BEGIN
+    CREATE TABLE Reviews (
+        ReviewID INT IDENTITY(1,1) PRIMARY KEY,
+        ReviewerUserId INT,
+        ReviewedUserId INT,
+        ServiciuId INT,
+        Rating DECIMAL(10, 2),
+        ReviewDescription NVARCHAR(MAX),
+        FOREIGN KEY (ReviewerUserId) REFERENCES Users(UserID),
+        FOREIGN KEY (ReviewedUserId) REFERENCES Users(UserID),
+        FOREIGN KEY (ServiciuId) REFERENCES Servicii(ID)
+    );
+END;
