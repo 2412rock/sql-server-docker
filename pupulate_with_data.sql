@@ -20,21 +20,18 @@ SELECT 'Zugrav' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Zugrav')
 UNION ALL
 SELECT 'Menajera' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Menajera')
 UNION ALL
-SELECT 'Instalator' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
-
+SELECT 'Instalator' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator')
 UNION ALL
-SELECT 'Sudor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Sudor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Sudor')
 UNION ALL
-SELECT 'Tamplar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Tamplar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Tamplar')
 UNION ALL
-SELECT 'Mecanic ' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Mecanic' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Mecanic')
 UNION ALL
-SELECT 'Zidar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Zidar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Zidar')
 UNION ALL
-SELECT 'Operator de echipamente grele' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Operator de echipamente grele' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Operator de echipamente grele')
 UNION ALL
-SELECT 'Lacatus' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+SELECT 'Lacatus' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Lacatus')
 UNION ALL
 SELECT 'Tencuitor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Tencuitor');
-UNION ALL
-SELECT 'Instalator' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
