@@ -21,3 +21,20 @@ UNION ALL
 SELECT 'Menajera' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Menajera')
 UNION ALL
 SELECT 'Instalator' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+
+UNION ALL
+SELECT 'Sudor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Tamplar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Mecanic ' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Zidar' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Operator de echipamente grele' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Lacatus' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
+UNION ALL
+SELECT 'Tencuitor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Tencuitor');
+UNION ALL
+SELECT 'Instalator' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Instalator');
