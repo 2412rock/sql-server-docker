@@ -1,9 +1,11 @@
--- Check if the DorelDB database exists, if not, create it
 IF NOT EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DorelDB')
 BEGIN
     CREATE DATABASE DorelDB;
 END;
 
+-- Switch to the newly created database
+USE master;
+GO
 USE DorelDB;
 -- Check if the Users table exists, if not, create it
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users')
