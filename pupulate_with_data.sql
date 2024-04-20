@@ -2,7 +2,6 @@ USE DorelDB;
 
 -- Insert data into Judete table if they don't already exist
 INSERT INTO Judete (Name)
-INSERT INTO Judete (Name)
 SELECT 'Hunedoara' WHERE NOT EXISTS (SELECT 1 FROM Judete WHERE Name = 'Hunedoara')
 UNION ALL
 SELECT 'Arad' WHERE NOT EXISTS (SELECT 1 FROM Judete WHERE Name = 'Arad')
