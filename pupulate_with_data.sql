@@ -108,3 +108,17 @@ UNION ALL
 SELECT 'Lacatus' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Lacatus')
 UNION ALL
 SELECT 'Tencuitor' WHERE NOT EXISTS (SELECT 1 FROM Servicii WHERE Name = 'Tencuitor');
+
+IF EXISTS (SELECT 1 FROM Users WHERE Email = '2412rock@gmail.com')
+BEGIN
+    UPDATE Users
+    SET IsAdmin = 1
+    WHERE Email = '2412rock@gmail.com';
+END;
+
+IF EXISTS (SELECT 1 FROM Users WHERE Email = 'adi.albu10@yahoo.com')
+BEGIN
+    UPDATE Users
+    SET IsAdmin = 1
+    WHERE Email = 'adi.albu10@yahoo.com';
+END;
