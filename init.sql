@@ -29,6 +29,15 @@ BEGIN
     );
 END;
 
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'AccessLogs')
+BEGIN
+    CREATE TABLE AccessLogs (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
+        IpAddress NVARCHAR(255),
+        AccessTime DATETIME
+    );
+END;
+
 -- Check if the Judete table exists, if not, create it
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Judete')
 BEGIN
