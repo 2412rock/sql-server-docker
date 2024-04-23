@@ -63,6 +63,7 @@ BEGIN
         UserID INT,
         ServiciuIdID INT,
         JudetID INT,
+        IsAdmin BIT,
         PRIMARY KEY (UserID, ServiciuIdID, JudetID),
         FOREIGN KEY (UserID) REFERENCES Users(UserID),
         FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ID),
@@ -79,11 +80,11 @@ BEGIN
     ADD Rating DECIMAL(10, 2);
 END;
 
-IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'JunctionServiciuJudete' AND COLUMN_NAME = 'IsAdmin')
-BEGIN
-    ALTER TABLE Users
-    ADD IsAdmin BIT;
-END;
+-- IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'JunctionServiciuJudete' AND COLUMN_NAME = 'IsAdmin')
+-- BEGIN
+--     ALTER TABLE Users
+--     ADD IsAdmin BIT;
+-- END;
 
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'JunctionServiciuJudete' AND COLUMN_NAME = 'Views')
 BEGIN
