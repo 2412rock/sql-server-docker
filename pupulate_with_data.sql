@@ -122,3 +122,8 @@ BEGIN
     SET IsAdmin = 1
     WHERE Email = 'adi.albu10@yahoo.com';
 END;
+
+-- Set default value to 1 if the existing value is NULL
+UPDATE JunctionServiciuJudete 
+SET Ofer = 1 
+WHERE Ofer IS NULL;
