@@ -60,13 +60,11 @@ END;
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'JunctionServiciuJudete')
 BEGIN
     CREATE TABLE JunctionServiciuJudete (
+        ID INT IDENTITY(1,1) PRIMARY KEY,
         UserID INT,
         ServiciuIdID INT,
         JudetID INT,
-        PRIMARY KEY (UserID, ServiciuIdID, JudetID),
-        FOREIGN KEY (UserID) REFERENCES Users(UserID),
-        FOREIGN KEY (ServiciuIdID) REFERENCES Servicii(ID),
-        FOREIGN KEY (JudetID) REFERENCES Judete(ID),
+        Ofer BIT,
         Descriere NVARCHAR(1024)
     );
 END;
